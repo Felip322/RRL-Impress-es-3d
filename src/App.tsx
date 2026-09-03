@@ -218,7 +218,7 @@ function App() {
       <section className="final-cta container"><div className="cta-icon"><Sparkles /></div><div><span>VAMOS TIRAR SUA IDEIA DO PAPEL?</span><h2>Sua próxima criação<br />começa com uma mensagem.</h2></div><a className="button light-button" href={INSTAGRAM} target="_blank" rel="noreferrer">Pedir orçamento <MessageCircle /></a></section>
     </main>
 
-    <footer><div className="container footer-grid"><div><Logo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="./catalogo.html">Catálogo</a><a href="#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram /> @rrlimpressoes3d</a><span>Orçamentos via Direct</span><span>São José dos Campos - SP</span></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D</span><span>Feito com precisão, camada por camada.</span></div></footer>
+    <footer><div className="container footer-grid"><div><Logo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="./catalogo.html">Catálogo</a><a href="#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram /> @rrlimpressoes3d</a><span>Orçamentos via Direct</span></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
     <a className="floating-instagram" href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo Instagram"><Instagram /><span>Pedir orçamento</span></a>
   </div>
 }
