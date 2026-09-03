@@ -249,9 +249,9 @@ footer .logo .brand-logo{width:165px;height:110px}
   .eyebrow{font-size:8px;letter-spacing:2px}
   .hero h1{font-size:clamp(42px,13.5vw,60px);line-height:.98;letter-spacing:-3.4px;margin:20px 0}
   .hero-content>p{font-size:14px;line-height:1.65;max-width:94%}
-  .hero-actions{display:grid;grid-template-columns:1fr auto;gap:9px;margin-top:25px}
-  .hero-actions .button{min-height:52px;padding:0 17px}
-  .hero-actions .ghost{width:54px;padding:0;font-size:0}
+  .hero-actions{display:flex;flex-direction:column;gap:9px;margin-top:25px}
+  .hero-actions .button{width:100%;min-height:52px;padding:0 17px;justify-content:center}
+  .hero-actions .ghost{font-size:10px}
   .hero-actions .ghost svg{width:19px}
   .hero-features{margin-top:20px;gap:8px;justify-content:flex-start;flex-wrap:wrap}
   .hero-features span{padding:7px 10px;border:1px solid rgba(255,255,255,.11);border-radius:50px;background:rgba(7,16,30,.35);font-size:7px}
