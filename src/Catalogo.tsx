@@ -112,7 +112,7 @@ export default function Catalogo() {
       <section className="catalog-custom container"><div className="catalog-custom-icon"><Sparkles /></div><div><span>NÃO ENCONTROU O QUE IMAGINOU?</span><h2>A gente também cria<br />uma peça só para você.</h2></div><a className="button light-button" href={INSTAGRAM} target="_blank" rel="noreferrer">Enviar minha ideia <MessageCircle /></a></section>
     </main>
 
-    <footer><div className="container footer-grid"><div><BrandLogo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="./index.html">Página inicial</a><a href="#catalogo">Catálogo</a><a href="./index.html#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><InstagramIcon /> @rrlimpressoes3d</a><span>Orçamentos via Direct</span></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D</span><span>Feito com precisão, camada por camada.</span></div></footer>
+    <footer><div className="container footer-grid"><div><BrandLogo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="./index.html">Página inicial</a><a href="#catalogo">Catálogo</a><a href="./index.html#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><InstagramIcon /> @rrlimpressoes3d</a><span>Orçamentos via Direct</span><span>São José dos Campos - SP</span></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D</span><span>Feito com precisão, camada por camada.</span></div></footer>
     <a className="floating-instagram" href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo Instagram"><InstagramIcon /><span>Pedir orçamento</span></a>
   </div>
 }
