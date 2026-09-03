@@ -54,7 +54,7 @@ drop policy if exists "Admins can delete products" on public.products;
 create policy "Admins can delete products" on public.products for delete to authenticated using (public.is_catalog_admin());
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('product-images', 'product-images', true, 5242880, array['image/jpeg','image/png','image/webp','image/avif'])
+values ('product-images', 'product-images', true, 5242880, array['image/jpeg','image/png','image/gif','image/webp','image/avif'])
 on conflict (id) do update set public = excluded.public, file_size_limit = excluded.file_size_limit, allowed_mime_types = excluded.allowed_mime_types;
 
 drop policy if exists "Public can view product images" on storage.objects;
