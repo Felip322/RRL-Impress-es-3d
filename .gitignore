@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tsbuildinfo
+preview*.png
+portfolio-preview*.png
+magic-preview*.png
+faq-*-check.png
+.edge-*/
+.chrome-*/
+.env
+.env.local
+.env.*.local
+!.env.example
