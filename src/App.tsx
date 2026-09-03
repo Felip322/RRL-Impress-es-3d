@@ -135,6 +135,7 @@ function App() {
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
       </div>
     </header>
+    {menuOpen && <button className="menu-backdrop" onClick={closeMenu} aria-label="Fechar menu" />}
 
     <main>
       <section className="hero" id="inicio">
