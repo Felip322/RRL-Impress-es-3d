@@ -5,6 +5,7 @@ preview*.png
 portfolio-preview*.png
 magic-preview*.png
 faq-*-check.png
+faq-check.png
 .edge-*/
 .chrome-*/
 .env
