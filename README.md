@@ -19,6 +19,12 @@ npm run build
 
 Os arquivos otimizados serão gerados em `dist/` e podem ser publicados em serviços como Vercel, Netlify ou Cloudflare Pages.
 
+### Domínio oficial
+
+O projeto está preparado para publicação automática no GitHub Pages usando o domínio `rrlimpressoes3d.online`. Cada envio para a branch `main` executa o workflow `.github/workflows/deploy-pages.yml`.
+
+No GitHub, selecione **Settings → Pages → Source → GitHub Actions** e informe `rrlimpressoes3d.online` no campo **Custom domain**. Na GoDaddy, configure os quatro registros `A` do domínio raiz para os IPs oficiais do GitHub Pages e um registro `CNAME` chamado `www` apontando para `Felip322.github.io`.
+
 ## Atualizar o GitHub no Windows
 
 Dê dois cliques em `atualizar-github.bat`, informe uma descrição curta da alteração e aguarde a confirmação. O arquivo sincroniza o projeto, valida o build, cria o commit e envia para a branch `main`.

@@ -88,7 +88,7 @@ export default function Catalogo() {
             <a className="catalog-back" href="./index.html"><ArrowLeft /> Voltar ao site</a>
             <div className="eyebrow"><span /> Catálogo RRL</div>
             <h1>Peças que já<br /><em>ganharam forma.</em></h1>
-            <p>Explore modelos disponíveis e encontre a próxima peça para sua coleção, decoração ou presente.</p>
+            <p>Explore peças personalizadas, brinquedos, decoração e outras criações para presentear, colecionar ou usar no dia a dia.</p>
             <div className="catalog-trust"><span><PackageCheck /> Produção sob encomenda</span><span><Check /> Personalização disponível</span></div>
           </div>
           <div className="catalog-hero-art" aria-hidden="true"><span className="catalog-spark spark-one" /><span className="catalog-spark spark-two" /><img src="/conceito-cinetico.png" alt="" fetchPriority="high" /></div>
@@ -98,7 +98,7 @@ export default function Catalogo() {
       <section className="catalog-listing container" id="catalogo">
         <div className="catalog-heading">
           <div><div className="section-tag">PEÇAS À VENDA</div><h2>Escolha uma criação.<br /><em>Deixe do seu jeito.</em></h2></div>
-          <p>As cores e dimensões podem variar conforme o modelo. Fale com a gente para confirmar valor, prazo e opções de personalização.</p>
+          <p>Modelos, cores e dimensões podem variar. Consulte o prazo, a disponibilidade e as opções de acabamento antes de confirmar seu pedido.</p>
         </div>
 
         <div className="catalog-toolbar">
@@ -110,7 +110,7 @@ export default function Catalogo() {
         <div className="catalog-grid">
           {filteredItems.map(item => <article className="catalog-card" key={item.id}>
             <div className="catalog-card-image"><img src={item.image_url} alt={item.name} loading="lazy" decoding="async" /><span className={item.stock === 0 ? 'sold-out' : ''}><i /> {item.stock === 0 ? 'Esgotado' : item.status}</span><b>{item.category}</b></div>
-            <div className="catalog-card-body"><div><span className="catalog-code">CÓDIGO <b>{item.code}</b></span><h3>{item.name}</h3><p>{item.description}</p></div><div className="catalog-price"><span>VALOR</span><strong>{formatPrice(item.price)}</strong>{item.stock !== null && <small>{item.stock} {item.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}</small>}</div><a href={whatsappUrl(`Olá! Tenho interesse no produto ${item.code} — ${item.name}. Gostaria de solicitar um orçamento.`)} target="_blank" rel="noreferrer" aria-label={`Tenho interesse no produto ${item.code} pelo WhatsApp`}>Tenho interesse <span>{item.code}</span><ArrowRight /></a></div>
+            <div className="catalog-card-body"><div><span className="catalog-code">CÓDIGO <b>{item.code}</b></span><h3>{item.name}</h3><p>{item.description}</p></div><div className="catalog-price"><span>VALOR</span><strong>{formatPrice(item.price)}</strong>{item.stock !== null && <small>{item.stock} {item.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}</small>}</div><a href={whatsappUrl(`Olá! Tenho interesse no produto ${item.code} — ${item.name}. Gostaria de confirmar o valor, o prazo e a disponibilidade desse modelo.`)} target="_blank" rel="noreferrer" aria-label={`Tenho interesse no produto ${item.code} pelo WhatsApp`}>Tenho interesse <span>{item.code}</span><ArrowRight /></a></div>
           </article>)}
         </div>
         {filteredItems.length === 0 && <div className="catalog-empty"><Sparkles /><h3>Nenhuma peça encontrada.</h3><p>Tente outra categoria ou termo de busca.</p></div>}

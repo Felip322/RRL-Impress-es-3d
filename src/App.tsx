@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import {
-  ArrowRight, Check, ChevronDown, Cpu, ExternalLink, Gift,
-  Layers3, Menu, MessageCircle, Palette, Ruler, Sparkles, X
+  ArrowRight, BookOpen, Check, ChevronDown, ExternalLink, Gift,
+  Layers3, Menu, MessageCircle, Palette, Puzzle, Sparkles, X
 } from 'lucide-react'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
 const WHATSAPP = 'https://wa.me/5512981147499?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.'
-const MARQUEE_ITEMS = ['PERSONALIZAÇÃO', 'CRIATIVIDADE', 'PRECISÃO', 'TECNOLOGIA', 'ACABAMENTO', 'EXCLUSIVIDADE']
+const MARQUEE_ITEMS = ['PERSONALIZAÇÃO', 'BRINQUEDOS', 'EDUCAÇÃO', 'DECORAÇÃO', 'ACABAMENTOS', 'PEÇAS ÚNICAS']
 const PROJECTS = [
   { image: '/projeto-instagram-01.jpg', url: 'https://www.instagram.com/p/Dcy3okcCfEj/', category: 'PERSONALIZADO', title: 'Peça temática multicolorida', alt: 'Peça temática amarela e preta produzida pela RRL' },
   { image: '/projeto-instagram-02.jpg', url: 'https://www.instagram.com/p/Dcybwk3RFQI/', category: 'ARTICULADO', title: 'Criatura em filamento brilhante', alt: 'Criatura articulada verde produzida em impressão 3D' },
@@ -113,15 +113,16 @@ function App() {
 
   const closeMenu = () => setMenuOpen(false)
   const services = [
-    { icon: Gift, number: '01', title: 'Presentes personalizados', text: 'Peças únicas para transformar datas especiais em memórias que ficam.' },
-    { icon: Palette, number: '02', title: 'Decoração criativa', text: 'Objetos com personalidade, cores e medidas pensadas para o seu espaço.' },
-    { icon: Ruler, number: '03', title: 'Projetos sob medida', text: 'Da referência à peça pronta, criamos soluções exclusivas para a sua ideia.' },
-    { icon: Cpu, number: '04', title: 'Peças funcionais', text: 'Suportes, organizadores, reposições e protótipos com precisão nos detalhes.' },
+    { icon: Gift, number: '01', title: 'Personalizados e presentes', text: 'Nomes, lembranças e peças únicas criadas especialmente para cada pessoa ou ocasião.' },
+    { icon: Puzzle, number: '02', title: 'Brinquedos e sensoriais', text: 'Brinquedos, articulados e modelos sensoriais que combinam forma, cor e movimento.' },
+    { icon: BookOpen, number: '03', title: 'Trabalhos escolares', text: 'Modelos didáticos e peças sob medida para tornar projetos e apresentações mais visuais.' },
+    { icon: Palette, number: '04', title: 'Decoração e artigos religiosos', text: 'Peças decorativas e religiosas em diversas cores, estilos e opções de acabamento.' },
   ]
   const questions = [
     ['Como faço um orçamento?', 'Envie uma mensagem pelo WhatsApp com uma foto, referência ou descrição da ideia. Se souber as medidas, envie também — isso agiliza a avaliação.'],
     ['Vocês fazem peças personalizadas?', 'Sim. Personalização é uma das nossas especialidades: ajustamos modelo, cor, tamanho e detalhes conforme a necessidade do projeto.'],
     ['Qual é o prazo de produção?', 'O prazo varia conforme tamanho, complexidade, acabamento e fila de produção. A previsão é informada antes da confirmação do pedido.'],
+    ['Todos os modelos estão disponíveis?', 'A disponibilidade pode variar. Antes de confirmar o pedido, consulte o modelo desejado e o prazo atual de produção pelo WhatsApp.'],
     ['Posso enviar meu próprio arquivo 3D?', 'Sim. Envie o arquivo para avaliarmos dimensões, material, tempo de impressão e eventuais ajustes necessários.'],
   ]
 
@@ -152,13 +153,13 @@ function App() {
         <div className="hero-content container">
           <div className="eyebrow"><span /> Impressão 3D personalizada</div>
           <h1>Sua ideia.<br /><em>Em outra dimensão.</em></h1>
-          <p>Transformamos referências, necessidades e imaginação em peças 3D únicas — feitas com cuidado, precisão e personalidade.</p>
+          <p>Produtos personalizados, brinquedos, trabalhos escolares, decoração e muito mais — da inspiração à peça final, sob medida para você.</p>
           <div className="hero-actions">
             <a className="button primary" href={WHATSAPP} target="_blank" rel="noreferrer">Quero criar minha peça <ArrowRight /></a>
             <a className="button ghost" href="#projetos">Ver projetos <ChevronDown /></a>
           </div>
           <div className="hero-features">
-            <span><Check /> Personalizado</span><span><Check /> Sob encomenda</span><span><Check /> Feito com cuidado</span>
+            <span><Check /> Atendimento personalizado</span><span><Check /> Diversas cores e acabamentos</span><span><Check /> Peças únicas</span>
           </div>
         </div>
         <div className="hero-tech-card tech-one"><Layers3 /><span><b>Camada por camada</b><small>Precisão que ganha forma</small></span></div>
@@ -174,7 +175,7 @@ function App() {
         <div className="section-tag">01 — O QUE FAZEMOS</div>
         <div className="intro-grid">
           <div className="intro-heading"><h2>Da imaginação<br />para <em>suas mãos.</em></h2><div className="intro-art" aria-hidden="true"><span /><img src="/imaginacao-para-realidade.png" alt="" loading="lazy" decoding="async" /></div></div>
-          <div><p className="lead">Mais do que imprimir objetos, damos forma a ideias que ainda não existem.</p><p>Cada projeto recebe atenção aos detalhes, escolha de material e acabamento para chegar a um resultado que tenha a sua cara e cumpra seu propósito.</p><a className="text-link" href={INSTAGRAM} target="_blank" rel="noreferrer">Conheça nosso Instagram <ExternalLink /></a></div>
+          <div><p className="lead">Da inspiração à realização: damos forma a ideias feitas especialmente para você.</p><p>Trabalhamos com personalizados, brinquedos, modelos sensoriais, trabalhos escolares, decoração, artigos religiosos e outros projetos sob medida, com atenção às cores e ao acabamento.</p><a className="text-link" href={INSTAGRAM} target="_blank" rel="noreferrer">Conheça nosso Instagram <ExternalLink /></a></div>
         </div>
         <div className="metrics"><div><strong>100%</strong><span>personalizável</span></div><div><strong>3D</strong><span>feito camada por camada</span></div><div><strong>1:1</strong><span>atendimento próximo</span></div></div>
         <div className="intro-showcase"><img src="/conceito-decoracao.png" alt="Conceito ilustrativo de objetos decorativos produzidos em impressão 3D" loading="lazy" decoding="async" /><div><span>DECORAÇÃO & UTILIDADE</span><h3>Peças que transformam<br />o ambiente.</h3><small>VISUAL ILUSTRATIVO</small></div></div>
@@ -189,7 +190,7 @@ function App() {
 
       <section className="possibilities">
         <div className="container">
-          <div className="possibilities-head"><div><div className="section-tag">03 — IDEIAS QUE GANHAM FORMA</div><h2>Imagine as<br /><em>possibilidades.</em></h2></div><div><p>De objetos articulados a peças decorativas e presentes: cada criação pode combinar forma, movimento, cor e personalidade.</p><small>VISUAIS ILUSTRATIVOS INSPIRADOS EM NOSSAS CATEGORIAS</small></div></div>
+          <div className="possibilities-head"><div><div className="section-tag">03 — IDEIAS QUE GANHAM FORMA</div><h2>Imagine as<br /><em>possibilidades.</em></h2></div><div><p>De brinquedos e peças sensoriais a modelos escolares, decoração e presentes: cada criação pode combinar forma, movimento, cor e personalidade.</p><small>VISUAIS ILUSTRATIVOS INSPIRADOS EM NOSSAS CATEGORIAS</small></div></div>
           <div className="possibilities-grid">
             <article className="possibility possibility-main"><img src="/conceito-articulado.png" alt="Conceito ilustrativo de criatura articulada impressa em 3D" loading="lazy" decoding="async" /><div><span>ARTICULADOS</span><h3>Movimento em<br />cada detalhe.</h3><p>Personagens e criaturas que saem prontos para ganhar vida nas suas mãos.</p></div></article>
             <article className="possibility"><img src="/conceito-cinetico.png" alt="Conceito ilustrativo de escultura cinética impressa em 3D" loading="lazy" decoding="async" /><div><span>DECORAÇÃO</span><h3>Formas que surpreendem.</h3></div></article>
@@ -209,7 +210,7 @@ function App() {
 
       <section className="process" id="processo">
         <div className="container process-grid"><div><div className="section-tag light">05 — COMO FUNCIONA</div><h2>Simples para você.<br /><em>Preciso em cada etapa.</em></h2><p>Do primeiro contato até a peça pronta, você acompanha um processo claro e sem complicação.</p></div><div className="steps">
-          {[['01', 'Conte sua ideia', 'Envie uma referência, arquivo ou explique o que precisa.'], ['02', 'Definimos os detalhes', 'Alinhamos medidas, cores, material, acabamento e prazo.'], ['03', 'Produzimos sua peça', 'Sua ideia ganha forma, camada por camada, com atenção.'], ['04', 'Pronto para você', 'Conferimos o resultado e combinamos a entrega.']].map(([n,t,p]) => <article key={n}><b>{n}</b><div><h3>{t}</h3><p>{p}</p></div></article>)}
+          {[['01', 'Conte sua ideia', 'Envie uma referência, arquivo ou explique o que precisa.'], ['02', 'Definimos os detalhes', 'Alinhamos o modelo, medidas, cores, acabamento e prazo disponível.'], ['03', 'Do protótipo à peça final', 'Sua ideia ganha forma, camada por camada, com acompanhamento cuidadoso.'], ['04', 'Pronto para você', 'Conferimos o resultado e combinamos a entrega.']].map(([n,t,p]) => <article key={n}><b>{n}</b><div><h3>{t}</h3><p>{p}</p></div></article>)}
         </div></div>
       </section>
 
