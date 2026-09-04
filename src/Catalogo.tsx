@@ -120,6 +120,6 @@ export default function Catalogo() {
     </main>
 
     <footer><div className="container footer-grid"><div><BrandLogo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="./index.html">Página inicial</a><a href="#catalogo">Catálogo</a><a href="./index.html#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><InstagramIcon /> @rrlimpressoes3d</a><a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer"><WhatsAppIcon /> (12) 98114-7499</a></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
-    <a className="floating-instagram" href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo WhatsApp"><WhatsAppIcon /><span>Pedir orçamento</span></a>
+    <a className="floating-instagram" href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo WhatsApp"><img src="/whatsapp-icon.png" alt="" /><span>Pedir orçamento</span></a>
   </div>
 }

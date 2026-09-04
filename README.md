@@ -19,6 +19,10 @@ npm run build
 
 Os arquivos otimizados serão gerados em `dist/` e podem ser publicados em serviços como Vercel, Netlify ou Cloudflare Pages.
 
+## Atualizar o GitHub no Windows
+
+Dê dois cliques em `atualizar-github.bat`, informe uma descrição curta da alteração e aguarde a confirmação. O arquivo sincroniza o projeto, valida o build, cria o commit e envia para a branch `main`.
+
 ## Conteúdo
 
 - `src/App.tsx`: textos, links, serviços, projetos e perguntas frequentes.
