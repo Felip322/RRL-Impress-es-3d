@@ -1,6 +1,6 @@
 # RRL Impressões 3D
 
-Site institucional responsivo criado para apresentar os serviços da RRL, mostrar projetos reais e direcionar novos clientes para orçamento pelo Instagram.
+Site institucional responsivo criado para apresentar os serviços da RRL, mostrar projetos reais e direcionar novos clientes para orçamento pelo WhatsApp.
 
 ## Executar localmente
 
@@ -35,4 +35,4 @@ Os arquivos otimizados serão gerados em `dist/` e podem ser publicados em servi
 - `public/projeto-instagram-01.jpg` a `projeto-instagram-04.jpg`: capas das publicações reais enviadas como referência.
 - `public/logo-instagram.jpg`: imagem de perfil pública da marca.
 
-O botão de orçamento aponta atualmente para `@rrlimpressoes3d`. Caso seja fornecido um número comercial, ele pode ser alterado para abrir uma conversa no WhatsApp.
+Os botões de orçamento abrem uma conversa no WhatsApp comercial `(12) 98114-7499`; os links de portfólio continuam direcionando para `@rrlimpressoes3d`.

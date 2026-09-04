@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
+const WHATSAPP = 'https://wa.me/5512981147499?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.'
 const MARQUEE_ITEMS = ['PERSONALIZAÇÃO', 'CRIATIVIDADE', 'PRECISÃO', 'TECNOLOGIA', 'ACABAMENTO', 'EXCLUSIVIDADE']
 const PROJECTS = [
   { image: '/projeto-instagram-01.jpg', url: 'https://www.instagram.com/p/Dcy3okcCfEj/', category: 'PERSONALIZADO', title: 'Peça temática multicolorida', alt: 'Peça temática amarela e preta produzida pela RRL' },
@@ -15,6 +16,10 @@ const PROJECTS = [
 
 function Instagram({ className = '' }: { className?: string }) {
   return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
+}
+
+function WhatsApp() {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 9.5 9.5 0 0 1-4.1-1L3 21l1.6-4.6A9 9 0 1 1 21 11.5Z"/><path d="M8.2 8.1c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.7 1.2 1.6 2.1 2.9 2.7.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .4-.2 1.4-.7 1.9-.5.5-1.3.8-2.2.8-1.2 0-3.3-.7-5.3-2.5-1.5-1.4-2.7-3.5-2.8-5 0-.7.2-1.3.5-1.8Z"/></svg>
 }
 
 function Logo() {
@@ -114,7 +119,7 @@ function App() {
     { icon: Cpu, number: '04', title: 'Peças funcionais', text: 'Suportes, organizadores, reposições e protótipos com precisão nos detalhes.' },
   ]
   const questions = [
-    ['Como faço um orçamento?', 'Envie uma mensagem pelo Instagram com uma foto, referência ou descrição da ideia. Se souber as medidas, envie também — isso agiliza a avaliação.'],
+    ['Como faço um orçamento?', 'Envie uma mensagem pelo WhatsApp com uma foto, referência ou descrição da ideia. Se souber as medidas, envie também — isso agiliza a avaliação.'],
     ['Vocês fazem peças personalizadas?', 'Sim. Personalização é uma das nossas especialidades: ajustamos modelo, cor, tamanho e detalhes conforme a necessidade do projeto.'],
     ['Qual é o prazo de produção?', 'O prazo varia conforme tamanho, complexidade, acabamento e fila de produção. A previsão é informada antes da confirmação do pedido.'],
     ['Posso enviar meu próprio arquivo 3D?', 'Sim. Envie o arquivo para avaliarmos dimensões, material, tempo de impressão e eventuais ajustes necessários.'],
@@ -131,7 +136,7 @@ function App() {
             <a key={item} href={href} onClick={closeMenu}>{item}</a>
           )}
         </nav>
-        <a className="header-cta" href={INSTAGRAM} target="_blank" rel="noreferrer">Pedir orçamento <ArrowRight /></a>
+        <a className="header-cta" href={WHATSAPP} target="_blank" rel="noreferrer">Pedir orçamento <ArrowRight /></a>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
       </div>
     </header>
@@ -149,7 +154,7 @@ function App() {
           <h1>Sua ideia.<br /><em>Em outra dimensão.</em></h1>
           <p>Transformamos referências, necessidades e imaginação em peças 3D únicas — feitas com cuidado, precisão e personalidade.</p>
           <div className="hero-actions">
-            <a className="button primary" href={INSTAGRAM} target="_blank" rel="noreferrer">Quero criar minha peça <ArrowRight /></a>
+            <a className="button primary" href={WHATSAPP} target="_blank" rel="noreferrer">Quero criar minha peça <ArrowRight /></a>
             <a className="button ghost" href="#projetos">Ver projetos <ChevronDown /></a>
           </div>
           <div className="hero-features">
@@ -178,7 +183,7 @@ function App() {
       <section className="services" id="solucoes">
         <div className="container">
           <div className="section-head"><div><div className="section-tag light">02 — POSSIBILIDADES</div><h2>O que podemos<br /><em>criar juntos.</em></h2></div><p>Se você consegue imaginar, nós buscamos o melhor caminho para materializar.</p></div>
-          <div className="service-grid">{services.map(({ icon: Icon, number, title, text }) => <article key={title}><span>{number}</span><Icon /><h3>{title}</h3><p>{text}</p><a href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label={`Orçamento para ${title}`}><ArrowRight /></a></article>)}</div>
+          <div className="service-grid">{services.map(({ icon: Icon, number, title, text }) => <article key={title}><span>{number}</span><Icon /><h3>{title}</h3><p>{text}</p><a href={WHATSAPP} target="_blank" rel="noreferrer" aria-label={`Orçamento para ${title} pelo WhatsApp`}><ArrowRight /></a></article>)}</div>
         </div>
       </section>
 
@@ -198,7 +203,7 @@ function App() {
         <div className="mobile-swipe-hint"><span>DESLIZE PARA EXPLORAR</span><ArrowRight /></div>
         <div className="project-grid">
           {PROJECTS.map((project, index) => <a className={`project-card project-${index + 1}`} href={project.url} target="_blank" rel="noreferrer" key={project.url}><img src={project.image} alt={project.alt} loading="lazy" decoding="async" /><div className="project-shade"/><div className="project-info"><span>{project.category}</span><h3>{project.title}</h3><b>Ver publicação <ExternalLink /></b></div><div className="real-badge"><span /> PROJETO RRL</div></a>)}
-          <article className="project-callout"><Layers3 /><span>SEU PROJETO AQUI</span><h3>Tem uma ideia<br />diferente?</h3><p>Mande uma referência. Vamos conversar sobre medidas, cores e possibilidades.</p><a className="button primary" href={INSTAGRAM} target="_blank" rel="noreferrer">Enviar minha ideia <ArrowRight /></a></article>
+          <article className="project-callout"><Layers3 /><span>SEU PROJETO AQUI</span><h3>Tem uma ideia<br />diferente?</h3><p>Mande uma referência. Vamos conversar sobre medidas, cores e possibilidades.</p><a className="button primary" href={WHATSAPP} target="_blank" rel="noreferrer">Enviar minha ideia <ArrowRight /></a></article>
         </div>
       </section>
 
@@ -215,11 +220,11 @@ function App() {
 
       <section className="faq container" id="faq"><div className="faq-intro"><div className="section-tag">07 — DÚVIDAS</div><h2>Antes de<br /><em>começar.</em></h2><p>Não encontrou sua dúvida? Fale diretamente com a gente.</p><div className="faq-art" aria-hidden="true"><span className="faq-art-orbit orbit-a" /><span className="faq-art-orbit orbit-b" /><span className="faq-art-spark spark-a" /><span className="faq-art-spark spark-b" /><img src="/faq-question-sculpture.png" alt="" loading="lazy" decoding="async" /><small>PERGUNTE. A GENTE MATERIALIZA.</small></div></div><div className="faq-list">{questions.map(([q,a], i) => <button key={q} onClick={() => setFaq(faq === i ? -1 : i)} className={faq === i ? 'active' : ''} aria-expanded={faq === i}><span><b>{q}</b>{faq === i && <p>{a}</p>}</span><i aria-hidden="true">{faq === i ? '−' : '+'}</i></button>)}</div></section>
 
-      <section className="final-cta container"><div className="cta-icon"><Sparkles /></div><div><span>VAMOS TIRAR SUA IDEIA DO PAPEL?</span><h2>Sua próxima criação<br />começa com uma mensagem.</h2></div><a className="button light-button" href={INSTAGRAM} target="_blank" rel="noreferrer">Pedir orçamento <MessageCircle /></a></section>
+      <section className="final-cta container"><div className="cta-icon"><Sparkles /></div><div><span>VAMOS TIRAR SUA IDEIA DO PAPEL?</span><h2>Sua próxima criação<br />começa com uma mensagem.</h2></div><a className="button light-button" href={WHATSAPP} target="_blank" rel="noreferrer">Pedir orçamento <MessageCircle /></a></section>
     </main>
 
-    <footer><div className="container footer-grid"><div><Logo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="./catalogo.html">Catálogo</a><a href="#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram /> @rrlimpressoes3d</a><span>Orçamentos via Direct</span></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
-    <a className="floating-instagram" href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo Instagram"><Instagram /><span>Pedir orçamento</span></a>
+    <footer><div className="container footer-grid"><div><Logo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="./catalogo.html">Catálogo</a><a href="#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram /> @rrlimpressoes3d</a><a href={WHATSAPP} target="_blank" rel="noreferrer"><WhatsApp /> (12) 98114-7499</a></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
+    <a className="floating-instagram" href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo WhatsApp"><WhatsApp /><span>Pedir orçamento</span></a>
   </div>
 }
 
