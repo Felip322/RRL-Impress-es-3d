@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Check, Menu, MessageCircle, PackageCheck, Search, Sparkles, X } from 'lucide-react'
-import { FALLBACK_PRODUCTS, formatPrice, type CatalogProduct } from './lib/catalog-data'
+import { formatPrice, type CatalogProduct } from './lib/catalog-data'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
@@ -25,8 +25,9 @@ export default function Catalogo() {
   const [scrolled, setScrolled] = useState(false)
   const [category, setCategory] = useState('Todos')
   const [query, setQuery] = useState('')
-  const [products, setProducts] = useState<CatalogProduct[]>(FALLBACK_PRODUCTS)
+  const [products, setProducts] = useState<CatalogProduct[]>([])
   const [loadingProducts, setLoadingProducts] = useState(isSupabaseConfigured)
+  const [loadError, setLoadError] = useState(!isSupabaseConfigured)
   const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
 
   const categories = ['Todos', ...Array.from(new Set(products.map(item => item.category)))]
@@ -40,7 +41,11 @@ export default function Catalogo() {
     const client = supabase
     const loadProducts = async () => {
       const { data, error } = await client.from('products').select('*').eq('active', true).order('featured', { ascending: false }).order('created_at', { ascending: false })
-      if (!error && data) setProducts(data as CatalogProduct[])
+      if (error) setLoadError(true)
+      else if (data) {
+        setProducts(data as CatalogProduct[])
+        setLoadError(false)
+      }
       setLoadingProducts(false)
     }
     void loadProducts()
@@ -121,12 +126,13 @@ export default function Catalogo() {
 
         <div className="catalog-count"><b>{String(filteredItems.length).padStart(2, '0')}</b> {loadingProducts ? 'carregando catálogo' : filteredItems.length === 1 ? 'peça encontrada' : 'peças encontradas'}</div>
         <div className="catalog-grid">
-          {filteredItems.map(item => <article className="catalog-card" key={item.id}>
+          {loadingProducts && Array.from({ length: 4 }, (_, index) => <article className="catalog-card catalog-card-skeleton" key={`loading-${index}`} aria-hidden="true"><div /><section><i /><i /><i /><i /></section></article>)}
+          {!loadingProducts && filteredItems.map(item => <article className="catalog-card" key={item.id}>
             <div className="catalog-card-image"><img src={item.image_url} alt={item.name} loading="lazy" decoding="async" role="button" tabIndex={0} aria-label={`Ampliar imagem de ${item.name}`} onClick={() => setPreviewImage({ src: item.image_url, alt: item.name })} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setPreviewImage({ src: item.image_url, alt: item.name }) } }} /><span className={item.stock === 0 ? 'sold-out' : ''}><i /> {item.stock === 0 ? 'Esgotado' : item.status}</span><b>{item.category}</b></div>
             <div className="catalog-card-body"><div><span className="catalog-code">CÓDIGO <b>{item.code}</b></span><h3>{item.name}</h3><p>{item.description}</p></div><div className="catalog-price"><span>VALOR</span><strong>{formatPrice(item.price)}</strong>{item.stock !== null && <small>{item.stock} {item.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}</small>}</div><a href={whatsappUrl(`Olá! Tenho interesse no produto ${item.code} — ${item.name}. Gostaria de confirmar o valor, o prazo e a disponibilidade desse modelo.`)} target="_blank" rel="noreferrer" aria-label={`Tenho interesse no produto ${item.code} pelo WhatsApp`}>Tenho interesse <span>{item.code}</span><ArrowRight /></a></div>
           </article>)}
         </div>
-        {filteredItems.length === 0 && <div className="catalog-empty"><Sparkles /><h3>Nenhuma peça encontrada.</h3><p>Tente outra categoria ou termo de busca.</p></div>}
+        {!loadingProducts && filteredItems.length === 0 && <div className="catalog-empty"><Sparkles /><h3>{loadError ? 'Catálogo temporariamente indisponível.' : 'Nenhuma peça encontrada.'}</h3><p>{loadError ? 'Tente novamente em alguns instantes ou fale conosco pelo WhatsApp.' : 'Tente outra categoria ou termo de busca.'}</p></div>}
       </section>
 
       <section className="catalog-custom container"><div className="catalog-custom-icon"><Sparkles /></div><div><span>NÃO ENCONTROU O QUE IMAGINOU?</span><h2>A gente também cria<br />uma peça só para você.</h2></div><a className="button light-button" href={whatsappUrl('Olá! Tenho uma ideia de peça personalizada e gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer">Enviar minha ideia <MessageCircle /></a></section>
