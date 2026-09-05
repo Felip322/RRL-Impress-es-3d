@@ -478,3 +478,16 @@ footer .logo .brand-logo{width:165px;height:110px}
 @keyframes pageTransitionOut{to{opacity:0;filter:blur(5px);transform:scale(.985)}}
 @keyframes pageTransitionIn{from{opacity:0;filter:blur(8px) brightness(1.15);clip-path:inset(0 0 0 100%);transform:scale(1.012)}to{opacity:1;filter:none;clip-path:inset(0);transform:none}}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),::view-transition-group(root),::view-transition-group(rrl-brand-logo){animation-duration:.01ms!important}}
+
+/* Portal de partículas exibido no clique antes da troca de página */
+.magic-navigation-active{overflow:hidden!important}
+.page-magic-transition{position:fixed;inset:0;z-index:9999;overflow:hidden;pointer-events:all;isolation:isolate;--magic-origin-x:50vw;--magic-origin-y:50vh}
+.page-magic-transition:before{content:'';position:absolute;z-index:-2;inset:0;background:radial-gradient(circle at var(--magic-origin-x) var(--magic-origin-y),#1b3150 0,#0c192c 34%,#050d19 72%);clip-path:circle(0 at var(--magic-origin-x) var(--magic-origin-y));animation:magicPortalOpen .68s cubic-bezier(.55,.02,.45,1) forwards}
+.page-magic-transition:after{content:'';position:absolute;z-index:-1;left:var(--magic-origin-x);top:var(--magic-origin-y);width:18px;height:18px;border:2px solid #f7dfa3;border-radius:50%;box-shadow:0 0 20px #d8aa4f,0 0 55px rgba(247,223,163,.9),inset 0 0 14px #fff;transform:translate(-50%,-50%) scale(.2);animation:magicLightRing .64s cubic-bezier(.12,.7,.2,1) forwards}
+.magic-transition-spark{position:fixed;z-index:2;left:var(--magic-origin-x);top:var(--magic-origin-y);width:var(--spark-size);height:var(--spark-size);border-radius:50%;background:#ffe6a6;box-shadow:0 0 7px #fff,0 0 16px #d5a543;opacity:0;animation:magicSparkFly var(--spark-duration) cubic-bezier(.12,.72,.2,1) var(--spark-delay) forwards}
+.magic-transition-spark.star{border-radius:0;background:#fff1bd;clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);box-shadow:none;filter:drop-shadow(0 0 6px #f0bd54)}
+@keyframes magicPortalOpen{0%{clip-path:circle(0 at var(--magic-origin-x) var(--magic-origin-y))}58%{clip-path:circle(32vmax at var(--magic-origin-x) var(--magic-origin-y))}100%{clip-path:circle(155vmax at var(--magic-origin-x) var(--magic-origin-y))}}
+@keyframes magicLightRing{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}20%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(42)}}
+@keyframes magicSparkFly{0%{opacity:0;transform:translate(-50%,-50%) rotate(0) scale(.2)}18%{opacity:1}72%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--spark-x)),calc(-50% + var(--spark-y))) rotate(190deg) scale(.15)}}
+@media(max-width:600px){.page-magic-transition:after{animation-duration:.56s}.magic-transition-spark:nth-of-type(n+19){display:none}}
+@media(prefers-reduced-motion:reduce){.page-magic-transition{display:none!important}}

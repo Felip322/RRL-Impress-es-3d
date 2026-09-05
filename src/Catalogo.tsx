@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft, ArrowRight, Check, Info, Menu, MessageCircle, PackageCheck, Search, Sparkles, X } from 'lucide-react'
 import { FALLBACK_PRODUCTS, formatPrice, type CatalogProduct } from './lib/catalog-data'
+import { installMagicNavigation } from './lib/magic-navigation'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
@@ -28,6 +29,8 @@ export default function Catalogo() {
   const [products, setProducts] = useState<CatalogProduct[]>(FALLBACK_PRODUCTS)
   const [loadingProducts, setLoadingProducts] = useState(isSupabaseConfigured)
   const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
+
+  useEffect(() => installMagicNavigation(), [])
 
   const categories = ['Todos', ...Array.from(new Set(products.map(item => item.category)))]
   const filteredItems = useMemo(() => products.filter(item =>

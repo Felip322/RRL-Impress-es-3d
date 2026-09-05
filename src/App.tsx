@@ -3,6 +3,7 @@ import {
   ArrowRight, BookOpen, Check, ChevronDown, ExternalLink, Gift,
   Info, Layers3, Menu, MessageCircle, Palette, Puzzle, Sparkles, X
 } from 'lucide-react'
+import { installMagicNavigation } from './lib/magic-navigation'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
 const WHATSAPP = 'https://wa.me/5512981147499?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.'
@@ -32,6 +33,8 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [faq, setFaq] = useState(0)
+
+  useEffect(() => installMagicNavigation(), [])
 
   useEffect(() => {
     const root = document.documentElement
