@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowLeft, ArrowRight, Check, Menu, MessageCircle, PackageCheck, Search, Sparkles, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Info, Menu, MessageCircle, PackageCheck, Search, Sparkles, X } from 'lucide-react'
 import { FALLBACK_PRODUCTS, formatPrice, type CatalogProduct } from './lib/catalog-data'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 
@@ -118,6 +118,8 @@ export default function Catalogo() {
           <div className="catalog-filters" role="group" aria-label="Filtrar por categoria">{categories.map(item => <button key={item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}>{item}</button>)}</div>
           <label className="catalog-search"><Search /><span className="sr-only">Buscar no catálogo</span><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Buscar peça ou código" /></label>
         </div>
+
+        <div className="catalog-availability-note" role="note"><Info /><div><strong>Antes de escolher</strong><span>Consulte a disponibilidade dos modelos e as possibilidades de personalização para cada projeto.</span></div></div>
 
         <div className="catalog-count"><b>{String(filteredItems.length).padStart(2, '0')}</b> {loadingProducts ? 'carregando catálogo' : filteredItems.length === 1 ? 'peça encontrada' : 'peças encontradas'}</div>
         <div className="catalog-grid">

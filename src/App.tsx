@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowRight, BookOpen, Check, ChevronDown, ExternalLink, Gift,
-  Layers3, Menu, MessageCircle, Palette, Puzzle, Sparkles, X
+  Info, Layers3, Menu, MessageCircle, Palette, Puzzle, Sparkles, X
 } from 'lucide-react'
 
 const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
@@ -177,6 +177,7 @@ function App() {
           <div className="intro-heading"><h2>Da imaginação<br />para <em>suas mãos.</em></h2><div className="intro-art" aria-hidden="true"><span /><img src="/imaginacao-para-realidade.png" alt="" loading="lazy" decoding="async" /></div></div>
           <div><p className="lead">Da inspiração à realização: damos forma a ideias feitas especialmente para você.</p><p>Trabalhamos com personalizados, brinquedos, modelos sensoriais, trabalhos escolares, decoração, artigos religiosos e outros projetos sob medida, com atenção às cores e ao acabamento.</p><a className="text-link" href={INSTAGRAM} target="_blank" rel="noreferrer">Conheça nosso Instagram <ExternalLink /></a></div>
         </div>
+        <small className="intro-availability-note"><Info /> Consulte modelos disponíveis, cores, medidas e possibilidades de personalização.</small>
         <div className="metrics"><div><strong>100%</strong><span>personalizável</span></div><div><strong>3D</strong><span>feito camada por camada</span></div><div><strong>1:1</strong><span>atendimento próximo</span></div></div>
         <div className="intro-showcase"><img src="/conceito-decoracao.png" alt="Conceito ilustrativo de objetos decorativos produzidos em impressão 3D" loading="lazy" decoding="async" /><div><span>DECORAÇÃO & UTILIDADE</span><h3>Peças que transformam<br />o ambiente.</h3><small>VISUAL ILUSTRATIVO</small></div></div>
       </section>
@@ -185,6 +186,7 @@ function App() {
         <div className="container">
           <div className="section-head"><div><div className="section-tag light">02 — POSSIBILIDADES</div><h2>O que podemos<br /><em>criar juntos.</em></h2></div><p>Se você consegue imaginar, nós buscamos o melhor caminho para materializar.</p></div>
           <div className="service-grid">{services.map(({ icon: Icon, number, title, text }) => <article key={title}><span>{number}</span><Icon /><h3>{title}</h3><p>{text}</p><a href={WHATSAPP} target="_blank" rel="noreferrer" aria-label={`Orçamento para ${title} pelo WhatsApp`}><ArrowRight /></a></article>)}</div>
+          <small className="availability-note"><Info /> Consulte a disponibilidade dos modelos e as possibilidades de personalização para cada projeto.</small>
         </div>
       </section>
 
