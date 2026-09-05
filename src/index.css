@@ -465,3 +465,16 @@ footer .logo .brand-logo{width:165px;height:110px}
 /* Orientação abaixo da apresentação inicial */
 .intro-availability-note{width:fit-content;max-width:100%;display:flex;align-items:center;gap:8px;margin:24px 0 0 auto;padding:9px 13px;border:1px solid rgba(157,125,61,.24);border-radius:50px;background:rgba(205,169,95,.075);color:#80652f;font-size:10px;line-height:1.5;letter-spacing:.2px}.intro-availability-note svg{width:14px;height:14px;flex:0 0 auto}.intro-availability-note+.metrics{margin-top:24px}
 @media(max-width:600px){.intro-availability-note{align-items:flex-start;margin-top:22px;border-radius:10px;font-size:10px}.intro-availability-note svg{margin-top:1px}.intro-availability-note+.metrics{margin-top:20px}}
+
+/* Transição cinematográfica entre a página principal e o catálogo */
+@view-transition{navigation:auto}
+.header .brand-logo{view-transition-name:rrl-brand-logo}
+::view-transition-group(root){animation-duration:.72s;animation-timing-function:cubic-bezier(.22,.75,.2,1)}
+::view-transition-old(root){animation:pageTransitionOut .38s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:pageTransitionIn .72s cubic-bezier(.16,.8,.2,1) both}
+::view-transition-group(rrl-brand-logo){animation-duration:.72s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+::view-transition-image-pair(rrl-brand-logo){isolation:auto}
+::view-transition-old(rrl-brand-logo),::view-transition-new(rrl-brand-logo){mix-blend-mode:normal}
+@keyframes pageTransitionOut{to{opacity:0;filter:blur(5px);transform:scale(.985)}}
+@keyframes pageTransitionIn{from{opacity:0;filter:blur(8px) brightness(1.15);clip-path:inset(0 0 0 100%);transform:scale(1.012)}to{opacity:1;filter:none;clip-path:inset(0);transform:none}}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),::view-transition-group(root),::view-transition-group(rrl-brand-logo){animation-duration:.01ms!important}}
