@@ -378,7 +378,6 @@ footer .logo .brand-logo{width:165px;height:110px}
 .catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .catalog-filters{display:flex;flex-wrap:wrap;gap:8px}.catalog-filters button{min-height:40px;padding:0 16px;border:1px solid #d0cec7;border-radius:50px;background:transparent;color:#5f6b79;font-size:10px;font-weight:700;cursor:pointer;transition:.25s}.catalog-filters button:hover,.catalog-filters button.active{border-color:var(--navy);background:var(--navy);color:white;box-shadow:0 8px 22px rgba(7,16,30,.14)}
 .catalog-search{width:260px;height:44px;display:flex;align-items:center;gap:10px;padding:0 14px;border:1px solid #d0cec7;border-radius:50px;background:#faf8f3}.catalog-search svg{width:17px;color:#9a7b3e}.catalog-search input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-size:12px}.catalog-search input::placeholder{color:#8c96a1}
-.catalog-availability-note{display:flex;align-items:center;gap:13px;margin-top:20px;padding:14px 17px;border:1px solid rgba(165,127,51,.24);border-radius:9px;background:rgba(205,169,95,.08);color:#65717e}.catalog-availability-note>svg{width:19px;height:19px;flex:0 0 auto;color:#9d7833}.catalog-availability-note>div{display:flex;align-items:center;gap:11px}.catalog-availability-note strong{color:#8e6b2d;font-size:9px;letter-spacing:1.1px;text-transform:uppercase;white-space:nowrap}.catalog-availability-note span{font-size:12px;line-height:1.55}
 .catalog-count{margin:28px 0 18px;color:#7b8794;font-size:10px;text-transform:uppercase;letter-spacing:1.2px}.catalog-count b{margin-right:7px;color:#9d7b38;font-size:13px}
 .catalog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .catalog-card{min-width:0;display:grid;grid-template-columns:1.05fr .95fr;min-height:410px;overflow:hidden;border:1px solid #d8d6d0;border-radius:15px;background:#f8f6f1;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,border-color .3s}
@@ -460,8 +459,6 @@ footer .logo .brand-logo{width:165px;height:110px}
 @media(max-width:600px){.image-lightbox{padding:70px 14px 24px}.image-lightbox>img{max-width:calc(100vw - 28px);max-height:calc(100svh - 105px);border-radius:6px}.image-lightbox>button{width:43px;height:43px}}
 @media(prefers-reduced-motion:reduce){.image-lightbox,.image-lightbox>img{animation:none!important}}
 
-@media(max-width:600px){.catalog-availability-note{align-items:flex-start;padding:14px}.catalog-availability-note>div{display:block}.catalog-availability-note strong{display:block;margin-bottom:5px}.catalog-availability-note span{font-size:11px}}
-
 /* Orientação abaixo da apresentação inicial */
 .intro-availability-note{width:fit-content;max-width:100%;display:flex;align-items:center;gap:8px;margin:24px 0 0 auto;padding:9px 13px;border:1px solid rgba(157,125,61,.24);border-radius:50px;background:rgba(205,169,95,.075);color:#80652f;font-size:10px;line-height:1.5;letter-spacing:.2px}.intro-availability-note svg{width:14px;height:14px;flex:0 0 auto}.intro-availability-note+.metrics{margin-top:24px}
 @media(max-width:600px){.intro-availability-note{align-items:flex-start;margin-top:22px;border-radius:10px;font-size:10px}.intro-availability-note svg{margin-top:1px}.intro-availability-note+.metrics{margin-top:20px}}
@@ -478,16 +475,3 @@ footer .logo .brand-logo{width:165px;height:110px}
 @keyframes pageTransitionOut{to{opacity:0;filter:blur(5px);transform:scale(.985)}}
 @keyframes pageTransitionIn{from{opacity:0;filter:blur(8px) brightness(1.15);clip-path:inset(0 0 0 100%);transform:scale(1.012)}to{opacity:1;filter:none;clip-path:inset(0);transform:none}}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),::view-transition-group(root),::view-transition-group(rrl-brand-logo){animation-duration:.01ms!important}}
-
-/* Portal de partículas exibido no clique antes da troca de página */
-.magic-navigation-active{overflow:hidden!important}
-.page-magic-transition{position:fixed;inset:0;z-index:9999;overflow:hidden;pointer-events:all;isolation:isolate;--magic-origin-x:50vw;--magic-origin-y:50vh}
-.page-magic-transition:before{content:'';position:absolute;z-index:-2;inset:0;background:radial-gradient(circle at var(--magic-origin-x) var(--magic-origin-y),#1b3150 0,#0c192c 34%,#050d19 72%);clip-path:circle(0 at var(--magic-origin-x) var(--magic-origin-y));animation:magicPortalOpen .68s cubic-bezier(.55,.02,.45,1) forwards}
-.page-magic-transition:after{content:'';position:absolute;z-index:-1;left:var(--magic-origin-x);top:var(--magic-origin-y);width:18px;height:18px;border:2px solid #f7dfa3;border-radius:50%;box-shadow:0 0 20px #d8aa4f,0 0 55px rgba(247,223,163,.9),inset 0 0 14px #fff;transform:translate(-50%,-50%) scale(.2);animation:magicLightRing .64s cubic-bezier(.12,.7,.2,1) forwards}
-.magic-transition-spark{position:fixed;z-index:2;left:var(--magic-origin-x);top:var(--magic-origin-y);width:var(--spark-size);height:var(--spark-size);border-radius:50%;background:#ffe6a6;box-shadow:0 0 7px #fff,0 0 16px #d5a543;opacity:0;animation:magicSparkFly var(--spark-duration) cubic-bezier(.12,.72,.2,1) var(--spark-delay) forwards}
-.magic-transition-spark.star{border-radius:0;background:#fff1bd;clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);box-shadow:none;filter:drop-shadow(0 0 6px #f0bd54)}
-@keyframes magicPortalOpen{0%{clip-path:circle(0 at var(--magic-origin-x) var(--magic-origin-y))}58%{clip-path:circle(32vmax at var(--magic-origin-x) var(--magic-origin-y))}100%{clip-path:circle(155vmax at var(--magic-origin-x) var(--magic-origin-y))}}
-@keyframes magicLightRing{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}20%{opacity:1}75%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(42)}}
-@keyframes magicSparkFly{0%{opacity:0;transform:translate(-50%,-50%) rotate(0) scale(.2)}18%{opacity:1}72%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--spark-x)),calc(-50% + var(--spark-y))) rotate(190deg) scale(.15)}}
-@media(max-width:600px){.page-magic-transition:after{animation-duration:.56s}.magic-transition-spark:nth-of-type(n+19){display:none}}
-@media(prefers-reduced-motion:reduce){.page-magic-transition{display:none!important}}
