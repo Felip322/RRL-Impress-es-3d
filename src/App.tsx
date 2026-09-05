@@ -8,7 +8,7 @@ const INSTAGRAM = 'https://www.instagram.com/rrlimpressoes3d'
 const WHATSAPP = 'https://wa.me/5512981147499?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento.'
 const MARQUEE_ITEMS = ['PERSONALIZAÇÃO', 'BRINQUEDOS', 'EDUCAÇÃO', 'DECORAÇÃO', 'ACABAMENTOS', 'PEÇAS ÚNICAS']
 const PROJECTS = [
-  { image: '/instagram-capa-1.jpg', url: 'https://www.instagram.com/p/Dc4Ot9giRU-/', category: 'PRODUÇÃO & ACABAMENTO', title: 'Miniaturas com acabamento artesanal', alt: 'Miniaturas religiosas finalizadas e produzidas em impressão 3D pela RRL' },
+  { image: '/instagram-capa-1.jpg', url: 'https://www.instagram.com/p/Dc4Ot9giRU-/', category: 'PRODUÇÃO & ACABAMENTO', title: 'Da impressão ao acabamento, cuidado em cada detalhe.', alt: 'Miniaturas religiosas finalizadas e produzidas em impressão 3D pela RRL' },
   { image: '/projeto-instagram-02.jpg', url: 'https://www.instagram.com/p/Dcybwk3RFQI/', category: 'ARTICULADO', title: 'Criatura em filamento brilhante', alt: 'Criatura articulada verde produzida em impressão 3D' },
   { image: '/projeto-instagram-03.jpg', url: 'https://www.instagram.com/p/DcyeD1vEe5i/', category: 'BASTIDORES', title: 'Preparação de modelo 3D', alt: 'Modelo de estrela-do-mar sendo preparado para impressão' },
   { image: '/projeto-instagram-04.jpg', url: 'https://www.instagram.com/p/DcyZVfHEX1Y/', category: 'ARTE CINÉTICA', title: 'Efeito visual multicolorido', alt: 'Peça cinética multicolorida em formato geométrico' },
