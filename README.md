@@ -21,9 +21,7 @@ Os arquivos otimizados serão gerados em `dist/` e podem ser publicados em servi
 
 ### Domínio oficial
 
-O projeto está preparado para publicação automática no GitHub Pages usando o domínio `rrlimpressoes3d.online`. Cada envio para a branch `main` executa o workflow `.github/workflows/deploy-pages.yml`.
-
-No GitHub, selecione **Settings → Pages → Source → GitHub Actions** e informe `rrlimpressoes3d.online` no campo **Custom domain**. Na GoDaddy, configure os quatro registros `A` do domínio raiz para os IPs oficiais do GitHub Pages e um registro `CNAME` chamado `www` apontando para `Felip322.github.io`.
+O site é publicado pelo Cloudflare Pages em `rrl-impress-es-3d.pages.dev`. O domínio oficial `rrlimpressoes3d.online` deve ser associado ao projeto pelo painel do Cloudflare Pages. Cada envio para a branch `main` gera uma nova publicação automaticamente pela integração com o GitHub.
 
 ## Atualizar o GitHub no Windows
 
