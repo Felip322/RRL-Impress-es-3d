@@ -35,6 +35,7 @@ export default function Admin() {
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
   const [showForm, setShowForm] = useState(false)
+  const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
 
   const loadProducts = async () => {
     if (!supabase) return
@@ -65,6 +66,18 @@ export default function Admin() {
     })
     return () => listener.subscription.unsubscribe()
   }, [])
+
+  useEffect(() => {
+    if (!previewImage) return
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && setPreviewImage(null)
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [previewImage])
 
   const login = async (event: FormEvent) => {
     event.preventDefault()
@@ -160,9 +173,10 @@ export default function Admin() {
       </section>}
 
       <section className="admin-products">
-        {products.map(product => <article key={product.id} className={!product.active ? 'inactive' : ''}><img src={product.image_url} alt="" /><div className="admin-product-info"><span>{product.code} · {product.category}</span><h3>{product.name}</h3><p>{formatPrice(product.price)}{product.stock !== null ? ` · Estoque: ${product.stock}` : ' · Sob encomenda'}</p></div><div className="admin-product-status"><i className={product.active ? '' : 'off'} />{product.active ? 'Publicado' : 'Oculto'}</div><div className="admin-product-actions"><button onClick={() => editProduct(product)} title="Editar"><Pencil /></button><button onClick={() => void toggleVisibility(product)} title={product.active ? 'Ocultar' : 'Publicar'}>{product.active ? <EyeOff /> : <Eye />}</button><button className="danger" onClick={() => void deleteProduct(product)} title="Excluir"><Trash2 /></button></div></article>)}
+        {products.map(product => <article key={product.id} className={!product.active ? 'inactive' : ''}><img src={product.image_url} alt={product.name} role="button" tabIndex={0} aria-label={`Ampliar imagem de ${product.name}`} onClick={() => setPreviewImage({ src: product.image_url, alt: product.name })} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setPreviewImage({ src: product.image_url, alt: product.name }) } }} /><div className="admin-product-info"><span>{product.code} · {product.category}</span><h3>{product.name}</h3><p>{formatPrice(product.price)}{product.stock !== null ? ` · Estoque: ${product.stock}` : ' · Sob encomenda'}</p></div><div className="admin-product-status"><i className={product.active ? '' : 'off'} />{product.active ? 'Publicado' : 'Oculto'}</div><div className="admin-product-actions"><button onClick={() => editProduct(product)} title="Editar"><Pencil /></button><button onClick={() => void toggleVisibility(product)} title={product.active ? 'Ocultar' : 'Publicar'}>{product.active ? <EyeOff /> : <Eye />}</button><button className="danger" onClick={() => void deleteProduct(product)} title="Excluir"><Trash2 /></button></div></article>)}
         {products.length === 0 && <div className="admin-empty"><PackagePlus /><h3>O catálogo ainda está vazio.</h3><p>Cadastre a primeira peça para começar.</p></div>}
       </section>
     </main>
+    {previewImage && <div className="image-lightbox" role="dialog" aria-modal="true" aria-label={`Imagem ampliada: ${previewImage.alt}`} onClick={() => setPreviewImage(null)}><button type="button" onClick={() => setPreviewImage(null)} aria-label="Fechar imagem ampliada"><X /></button><img src={previewImage.src} alt={previewImage.alt} onClick={event => event.stopPropagation()} /></div>}
   </div>
 }

@@ -420,5 +420,41 @@ footer .logo .brand-logo{width:165px;height:110px}
 .floating-instagram:hover>img{transform:translateY(-4px) scale(1.05);filter:drop-shadow(0 16px 20px rgba(7,16,30,.34))}
 .floating-instagram:hover>span,.floating-instagram:focus-visible>span{opacity:1;transform:translate(0,-50%)}
 .floating-instagram:before{inset:-4px;border-color:rgba(37,211,102,.42)}
+.floating-catalog{bottom:96px}
+.floating-catalog:before{border-color:rgba(205,169,95,.58)}
+.floating-catalog>img{filter:drop-shadow(0 12px 16px rgba(7,16,30,.28))}
 @media(max-width:700px){.floating-instagram,.catalog-page .floating-instagram{right:14px;width:54px;height:54px}.floating-instagram>img{width:54px;height:54px}}
+@media(max-width:700px){.floating-catalog{bottom:calc(78px + env(safe-area-inset-bottom))}}
 @media(hover:none){.floating-instagram>span{display:none}}
+
+/* Exibe fotografias e artes completas no catálogo e no painel */
+.catalog-card-image img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  padding:12px;
+  object-fit:contain;
+  object-position:center;
+  background:var(--navy);
+  transition:filter .35s ease;
+}
+.catalog-card:hover .catalog-card-image img{transform:none;filter:brightness(1.06)}
+.admin-products>article>img{
+  padding:5px;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Ampliação das fotos dos produtos */
+.catalog-card-image img[role="button"],.admin-products>article>img[role="button"]{cursor:zoom-in}
+.catalog-card-image img[role="button"]:focus-visible,.admin-products>article>img[role="button"]:focus-visible{outline:3px solid var(--gold-light);outline-offset:-6px}
+.image-lightbox{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:clamp(22px,5vw,70px);background:rgba(3,9,18,.94);backdrop-filter:blur(14px);cursor:zoom-out;animation:lightboxFade .22s ease both}
+.image-lightbox>img{display:block;width:auto;height:auto;max-width:min(92vw,1400px);max-height:86vh;object-fit:contain;border-radius:10px;background:transparent;box-shadow:0 30px 90px rgba(0,0,0,.55);cursor:default;animation:lightboxReveal .3s cubic-bezier(.2,.75,.2,1) both}
+.image-lightbox>button{position:fixed;z-index:2;top:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);border-radius:50%;background:rgba(7,16,30,.72);color:white;cursor:pointer;transition:background .2s,transform .2s}
+.image-lightbox>button:hover{background:#a88137;transform:rotate(6deg)}
+.image-lightbox>button svg{width:22px;height:22px}
+@keyframes lightboxFade{from{opacity:0}to{opacity:1}}
+@keyframes lightboxReveal{from{opacity:0;transform:scale(.94) translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.image-lightbox{padding:70px 14px 24px}.image-lightbox>img{max-width:calc(100vw - 28px);max-height:calc(100svh - 105px);border-radius:6px}.image-lightbox>button{width:43px;height:43px}}
+@media(prefers-reduced-motion:reduce){.image-lightbox,.image-lightbox>img{animation:none!important}}

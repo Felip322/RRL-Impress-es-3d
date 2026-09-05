@@ -27,6 +27,7 @@ export default function Catalogo() {
   const [query, setQuery] = useState('')
   const [products, setProducts] = useState<CatalogProduct[]>(FALLBACK_PRODUCTS)
   const [loadingProducts, setLoadingProducts] = useState(isSupabaseConfigured)
+  const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
 
   const categories = ['Todos', ...Array.from(new Set(products.map(item => item.category)))]
   const filteredItems = useMemo(() => products.filter(item =>
@@ -61,6 +62,18 @@ export default function Catalogo() {
       window.removeEventListener('resize', onResize)
     }
   }, [menuOpen])
+
+  useEffect(() => {
+    if (!previewImage) return
+    const previousOverflow = document.body.style.overflow
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && setPreviewImage(null)
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [previewImage])
 
   return <div className="site-shell catalog-page">
     <header className={scrolled ? 'header scrolled' : 'header'}>
@@ -109,7 +122,7 @@ export default function Catalogo() {
         <div className="catalog-count"><b>{String(filteredItems.length).padStart(2, '0')}</b> {loadingProducts ? 'carregando catálogo' : filteredItems.length === 1 ? 'peça encontrada' : 'peças encontradas'}</div>
         <div className="catalog-grid">
           {filteredItems.map(item => <article className="catalog-card" key={item.id}>
-            <div className="catalog-card-image"><img src={item.image_url} alt={item.name} loading="lazy" decoding="async" /><span className={item.stock === 0 ? 'sold-out' : ''}><i /> {item.stock === 0 ? 'Esgotado' : item.status}</span><b>{item.category}</b></div>
+            <div className="catalog-card-image"><img src={item.image_url} alt={item.name} loading="lazy" decoding="async" role="button" tabIndex={0} aria-label={`Ampliar imagem de ${item.name}`} onClick={() => setPreviewImage({ src: item.image_url, alt: item.name })} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setPreviewImage({ src: item.image_url, alt: item.name }) } }} /><span className={item.stock === 0 ? 'sold-out' : ''}><i /> {item.stock === 0 ? 'Esgotado' : item.status}</span><b>{item.category}</b></div>
             <div className="catalog-card-body"><div><span className="catalog-code">CÓDIGO <b>{item.code}</b></span><h3>{item.name}</h3><p>{item.description}</p></div><div className="catalog-price"><span>VALOR</span><strong>{formatPrice(item.price)}</strong>{item.stock !== null && <small>{item.stock} {item.stock === 1 ? 'unidade disponível' : 'unidades disponíveis'}</small>}</div><a href={whatsappUrl(`Olá! Tenho interesse no produto ${item.code} — ${item.name}. Gostaria de confirmar o valor, o prazo e a disponibilidade desse modelo.`)} target="_blank" rel="noreferrer" aria-label={`Tenho interesse no produto ${item.code} pelo WhatsApp`}>Tenho interesse <span>{item.code}</span><ArrowRight /></a></div>
           </article>)}
         </div>
@@ -121,5 +134,6 @@ export default function Catalogo() {
 
     <footer><div className="container footer-grid"><div><BrandLogo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="./index.html">Página inicial</a><a href="#catalogo">Catálogo</a><a href="./index.html#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><InstagramIcon /> @rrlimpressoes3d</a><a href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer"><WhatsAppIcon /> (12) 98114-7499</a></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
     <a className="floating-instagram" href={whatsappUrl('Olá! Gostaria de solicitar um orçamento.')} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo WhatsApp"><img src="/whatsapp-icon.png" alt="" /><span>Pedir orçamento</span></a>
+    {previewImage && <div className="image-lightbox" role="dialog" aria-modal="true" aria-label={`Imagem ampliada: ${previewImage.alt}`} onClick={() => setPreviewImage(null)}><button type="button" onClick={() => setPreviewImage(null)} aria-label="Fechar imagem ampliada"><X /></button><img src={previewImage.src} alt={previewImage.alt} onClick={event => event.stopPropagation()} /></div>}
   </div>
 }

@@ -225,6 +225,7 @@ function App() {
     </main>
 
     <footer><div className="container footer-grid"><div><Logo /><p>Ideias ganham forma.<br />Detalhes ganham vida.</p></div><div><b>Navegue</b><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="./catalogo.html">Catálogo</a><a href="#processo">Processo</a></div><div><b>Contato</b><a href={INSTAGRAM} target="_blank" rel="noreferrer"><Instagram /> @rrlimpressoes3d</a><a href={WHATSAPP} target="_blank" rel="noreferrer"><WhatsApp /> (12) 98114-7499</a></div></div><div className="container copyright"><span>© 2026 RRL Impressões 3D · São José dos Campos - SP</span><span>Feito com precisão, camada por camada.</span></div></footer>
+    <a className="floating-instagram floating-catalog" href="./catalogo.html" aria-label="Ver catálogo de produtos"><img src="/catalogo-icon.png" alt="" /><span>Ver catálogo</span></a>
     <a className="floating-instagram" href={WHATSAPP} target="_blank" rel="noreferrer" aria-label="Pedir orçamento pelo WhatsApp"><img src="/whatsapp-icon.png" alt="" /><span>Pedir orçamento</span></a>
   </div>
 }

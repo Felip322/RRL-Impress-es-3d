@@ -26,12 +26,18 @@ if not exist ".git" (
 )
 
 echo [1/5] Sincronizando com o GitHub...
-git pull --rebase --autostash origin main
+git -c http.sslBackend=schannel -c http.version=HTTP/1.1 pull --rebase --autostash origin main
 if errorlevel 1 (
-  echo.
-  echo [ERRO] Nao foi possivel sincronizar com o GitHub.
-  echo Resolva o conflito indicado acima e execute este arquivo novamente.
-  goto :falha
+  echo [AVISO] A primeira tentativa falhou. Tentando novamente em 3 segundos...
+  timeout /t 3 /nobreak >nul
+  git -c http.sslBackend=schannel -c http.version=HTTP/1.1 pull --rebase --autostash origin main
+  if errorlevel 1 (
+    echo.
+    echo [ERRO] Nao foi possivel sincronizar com o GitHub apos duas tentativas.
+    echo Se aparecer "Connection was reset", confira a internet e execute novamente.
+    echo Se aparecer "CONFLICT", resolva o conflito indicado antes de continuar.
+    goto :falha
+  )
 )
 
 echo.
@@ -80,12 +86,17 @@ if errorlevel 1 goto :falha
 
 echo.
 echo [5/5] Enviando para o GitHub...
-git push origin main
+git -c http.sslBackend=schannel -c http.version=HTTP/1.1 push origin main
 if errorlevel 1 (
-  echo.
-  echo [ERRO] O commit foi criado localmente, mas o envio falhou.
-  echo Verifique sua internet ou login do GitHub e execute novamente.
-  goto :falha
+  echo [AVISO] A primeira tentativa de envio falhou. Tentando novamente em 3 segundos...
+  timeout /t 3 /nobreak >nul
+  git -c http.sslBackend=schannel -c http.version=HTTP/1.1 push origin main
+  if errorlevel 1 (
+    echo.
+    echo [ERRO] O commit foi criado localmente, mas o envio falhou.
+    echo Verifique sua internet ou login do GitHub e execute novamente.
+    goto :falha
+  )
 )
 
 :sucesso
